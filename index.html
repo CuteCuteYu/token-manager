@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Token Manager</h1>
+            <p class="subtitle">LLM Token Management System</p>
+            <nav>
+                <button class="nav-item active" data-tab="overview">Overview</button>
+                <button class="nav-item" data-tab="employees">Employees</button>
+                <button class="nav-item" data-tab="tokens">Tokens</button>
+                <button class="nav-item" data-tab="mappings">Mappings</button>
+            </nav>
+        </header>
+
+        <div id="overview" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalEmployees">-</div>
+                    <div class="stat-label">Total Employees</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalTokens">-</div>
+                    <div class="stat-label">Total Tokens</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeTokens">-</div>
+                    <div class="stat-label">Active Tokens</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="usagePercent">-</div>
+                    <div class="stat-label">Usage Percent</div>
+                </div>
+            </div>
+
+            <h3 class="section-title">Recent Token Usage</h3>
+            <div id="recentUsage"></div>
+        </div>
+
+        <div id="employees" class="tab-content">
+            <div class="panel">
+                <h3 class="panel-title">Add Employee</h3>
+                <form id="employeeForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-input" name="name" placeholder="Enter name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" name="email" placeholder="Enter email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Department</label>
+                            <input type="text" class="form-input" name="department" placeholder="Enter department">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Position</label>
+                            <input type="text" class="form-input" name="position" placeholder="Enter position">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Employee</button>
+                </form>
+            </div>
+
+            <h3 class="section-title">Employee List</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTable"></tbody>
+            </table>
+        </div>
+
+        <div id="tokens" class="tab-content">
+            <div class="panel">
+                <h3 class="panel-title">Issue Token</h3>
+                <form id="tokenForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Employee ID</label>
+                            <input type="text" class="form-input" name="employee_id" placeholder="Enter employee ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Total Quota</label>
+                            <input type="number" class="form-input" name="total_quota" placeholder="Enter quota" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Days Valid</label>
+                        <input type="number" class="form-input" name="days_valid" placeholder="Enter days" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Issue Token</button>
+                </form>
+            </div>
+
+            <h3 class="section-title">Token List</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Token ID</th>
+                        <th>Employee ID</th>
+                        <th>Token Value</th>
+                        <th>Quota</th>
+                        <th>Used</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tokenTable"></tbody>
+            </table>
+        </div>
+
+        <div id="mappings" class="tab-content">
+            <h3 class="section-title">Token-Employee Mappings</h3>
+            <div class="mappings-grid" id="mappingsGrid"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

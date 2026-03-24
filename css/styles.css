@@ -1,0 +1,541 @@
+/* =============================================================================
+ * Token Manager - Styles.css
+ * 
+ * This file contains all CSS styles for the Token Manager frontend.
+ * The design follows a dark minimalist theme with clean lines.
+ * 
+ * Table of Contents:
+ * 1. CSS Custom Properties (Variables)
+ * 2. Base Styles
+ * 3. Layout Components
+ * 4. Navigation
+ * 5. Statistics Grid
+ * 6. Data Tables
+ * 7. Forms
+ * 8. Panels and Cards
+ * 9. Status Badges and Buttons
+ * 10. Animations
+ * 11. Responsive Design
+ * 
+ * ============================================================================= */
+
+
+/* =============================================================================
+ * 1. CSS Custom Properties (Variables)
+ * Defines color palette and design tokens for consistent theming.
+ * ============================================================================= */
+
+:root {
+    /* Primary backgrounds - dark theme */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-tertiary: #1a1a1a;
+    
+    /* Border colors */
+    --border-color: #2a2a2a;
+    --border-hover: #3a3a3a;
+    --line-color: #333333;
+    
+    /* Text colors */
+    --text-primary: #e0e0e0;
+    --text-secondary: #888888;
+    --text-muted: #555555;
+    
+    /* Accent colors */
+    --accent: #c0c0c0;
+    --accent-dim: #606060;
+    --success: #a0a0a0;
+    --warning: #b0b0b0;
+    --error: #808080;
+}
+
+
+/* =============================================================================
+ * 2. Base Styles
+ * Resets and foundational styles applied to all elements.
+ * ============================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+/* =============================================================================
+ * 3. Layout Components
+ * Main container and header styles.
+ * ============================================================================= */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 60px;
+}
+
+header {
+    border-bottom: 1px solid var(--line-color);
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+.title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    letter-spacing: 2px;
+}
+
+
+/* =============================================================================
+ * 4. Navigation
+ * Tab-based navigation for switching between views.
+ * ============================================================================= */
+
+nav {
+    display: flex;
+    gap: 0;
+    margin-top: 30px;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.nav-item {
+    padding: 12px 24px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+.nav-item:hover {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.nav-item.active {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border-color: var(--line-color);
+}
+
+
+/* =============================================================================
+ * 5. Statistics Grid
+ * Dashboard overview cards displaying key metrics.
+ * ============================================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line-color);
+    border: 1px solid var(--line-color);
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    padding: 30px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* =============================================================================
+ * 6. Section Titles
+ * Headers for content sections.
+ * ============================================================================= */
+
+.section-title {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-color);
+}
+
+
+/* =============================================================================
+ * 7. Data Tables
+ * Styles for tabular data display.
+ * ============================================================================= */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.data-table td {
+    padding: 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tr:hover td {
+    background: var(--bg-secondary);
+}
+
+
+/* =============================================================================
+ * 8. Status Badges
+ * Visual indicators for token status.
+ * ============================================================================= */
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--border-color);
+}
+
+.status-badge.active {
+    color: var(--success);
+    border-color: var(--accent-dim);
+}
+
+.status-badge.revoked {
+    color: var(--text-muted);
+    border-color: var(--border-color);
+}
+
+
+/* =============================================================================
+ * 9. Action Buttons
+ * Interactive buttons for user actions.
+ * ============================================================================= */
+
+.action-btn {
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.action-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+}
+
+
+/* =============================================================================
+ * 10. Forms
+ * Input fields, labels, and form layouts.
+ * ============================================================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+    border-color: var(--border-hover);
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.btn-primary {
+    padding: 14px 32px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--border-hover);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-primary:hover {
+    background: var(--bg-secondary);
+    border-color: var(--text-secondary);
+}
+
+
+/* =============================================================================
+ * 11. Panels and Cards
+ * Container styles for grouped content.
+ * ============================================================================= */
+
+.panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.panel-title {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-color);
+}
+
+
+/* =============================================================================
+ * 12. Empty States
+ * Placeholder content when no data is available.
+ * ============================================================================= */
+
+.empty-state {
+    text-align: center;
+    padding: 80px 40px;
+    color: var(--text-muted);
+}
+
+.empty-state-text {
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.loading {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+/* =============================================================================
+ * 13. Tab Content
+ * Visibility control for tab panels.
+ * ============================================================================= */
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* =============================================================================
+ * 14. Mappings Grid
+ * Card grid layout for token-employee mappings.
+ * ============================================================================= */
+
+.mappings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line-color);
+    border: 1px solid var(--line-color);
+}
+
+.mapping-card {
+    background: var(--bg-secondary);
+    padding: 24px;
+}
+
+.mapping-employee {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.mapping-dept {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.mapping-token {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'IBM Plex Mono', monospace;
+    word-break: break-all;
+}
+
+.mapping-quota {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+}
+
+.quota-label {
+    color: var(--text-muted);
+}
+
+.quota-value {
+    color: var(--text-secondary);
+}
+
+
+/* =============================================================================
+ * 15. Detail Rows
+ * Label-value pair display for details.
+ * ============================================================================= */
+
+.detail-row {
+    display: flex;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-label {
+    width: 140px;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+
+/* =============================================================================
+ * 16. Animations
+ * Keyframe animations for visual effects.
+ * ============================================================================= */
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.animate-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+
+/* =============================================================================
+ * 17. Responsive Design
+ * Media queries for different screen sizes.
+ * ============================================================================= */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .mappings-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .mappings-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .data-table {
+        font-size: 12px;
+    }
+    .data-table th, 
+    .data-table td {
+        padding: 12px;
+    }
+}
